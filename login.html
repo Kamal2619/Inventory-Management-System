@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: url('img/back1.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+        }
+        label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            color: rgb(255, 254, 254);
+            margin-top: 10px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 5px;
+            background: transparent;
+            color: rgb(0, 0, 0);
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function redirectUser(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const role = document.getElementById('role').value;
+
+            if (role === 'manager') {
+                window.location.href = 'manager.html';
+            } else if (role === 'cashier') {
+                window.location.href = 'cashier.html';
+            } else if (role === 'dataEntry') {
+                window.location.href = 'data_entry.html';
+            } else {
+                alert('Invalid role selection!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 class="title">INVENTORY MANAGEMENT SYSTEM</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="redirectUser(event)">
+            <label for="role">Login as</label>
+            <select id="role">
+                <option value="manager">Manager</option>
+                <option value="cashier">Cashier</option>
+                <option value="dataEntry">Data Entry Operator</option>
+            </select>
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="signup.html">Sign Up</a>
+            <a href="#">Forgot Password?</a>
+        </div>
+    </div>
+</body>
+</html>
